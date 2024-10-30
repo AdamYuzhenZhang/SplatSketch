@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		610347D92B46864500693CE3 /* SplatSketchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DF62B41551F00302B57 /* SplatSketchApp.swift */; };
+		610347DA2B46874500693CE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DF72B41551F00302B57 /* ContentView.swift */; };
+		610347DB2B46875700693CE3 /* VisionSceneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791E0C2B41683500302B57 /* VisionSceneRenderer.swift */; };
+		610347DC2B46875A00693CE3 /* ContentStageConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610347D82B46861E00693CE3 /* ContentStageConfiguration.swift */; };
+		61791DCF2B41544300302B57 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 61791DC32B41514300302B57 /* Assets.xcassets */; };
+		61791DE02B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DDA2B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift */; };
+		61791DE22B4154FB00302B57 /* ModelIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DDB2B4154FB00302B57 /* ModelIdentifier.swift */; };
+		61791DE42B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DDC2B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift */; };
+		61791DE82B4154FB00302B57 /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DDE2B4154FB00302B57 /* ModelRenderer.swift */; };
+		61791DEA2B4154FB00302B57 /* MatrixMathUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791DDF2B4154FB00302B57 /* MatrixMathUtil.swift */; };
+		61791E002B415D3F00302B57 /* MetalSplatter in Frameworks */ = {isa = PBXBuildFile; productRef = 61791DFF2B415D3F00302B57 /* MetalSplatter */; };
+		61791E022B415D3F00302B57 /* SampleBoxRenderer in Frameworks */ = {isa = PBXBuildFile; productRef = 61791E012B415D3F00302B57 /* SampleBoxRenderer */; };
+		61791E102B41688000302B57 /* MetalKitSceneRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791E0E2B41685800302B57 /* MetalKitSceneRenderer.swift */; };
+		61791E132B416DD700302B57 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791E112B416DCF00302B57 /* Constants.swift */; };
+		61791E162B42297B00302B57 /* MetalKitSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61791E142B42294700302B57 /* MetalKitSceneView.swift */; };
+		617E50C92B314C4800F99766 /* PLYIO in Frameworks */ = {isa = PBXBuildFile; productRef = 617E50C82B314C4800F99766 /* PLYIO */; };
+		617E50CB2B314C4800F99766 /* SplatIO in Frameworks */ = {isa = PBXBuildFile; productRef = 617E50CA2B314C4800F99766 /* SplatIO */; };
+		E02D9DA32CC98C1500285A16 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D9DA22CC98C1500285A16 /* CanvasView.swift */; };
+		E02D9DA52CC9942500285A16 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D9DA42CC9942500285A16 /* Camera.swift */; };
+		E02D9DA72CC9947900285A16 /* SIMD+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D9DA62CC9947900285A16 /* SIMD+Extensions.swift */; };
+		E02D9DA92CC9AC7A00285A16 /* TouchManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D9DA82CC9AC7A00285A16 /* TouchManagerView.swift */; };
+		E02D9DAB2CC9AD7D00285A16 /* NoTouchCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D9DAA2CC9AD7D00285A16 /* NoTouchCanvasView.swift */; };
+		E02D9DAD2CC9B07300285A16 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02D9DAC2CC9B07300285A16 /* CameraController.swift */; };
+		E0BB52A62CC9E5B7001CC904 /* CodableStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52A52CC9E5B7001CC904 /* CodableStroke.swift */; };
+		E0BB52A92CCEFE39001CC904 /* SplatSketchProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52A82CCEFE39001CC904 /* SplatSketchProject.swift */; };
+		E0BB52AB2CD17B94001CC904 /* CanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52AA2CD17B94001CC904 /* CanvasData.swift */; };
+		E0BB52AD2CD17DA0001CC904 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52AC2CD17DA0001CC904 /* CameraData.swift */; };
+		E0BB52B02CD17F5A001CC904 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52AF2CD17F5A001CC904 /* AppManager.swift */; };
+		E0BB52B22CD18012001CC904 /* AppManager+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B12CD18012001CC904 /* AppManager+Project.swift */; };
+		E0BB52B42CD18286001CC904 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B32CD18286001CC904 /* Canvas.swift */; };
+		E0BB52B62CD18310001CC904 /* AppManager+Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B52CD18310001CC904 /* AppManager+Canvas.swift */; };
+		E0BB52B82CD183C5001CC904 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B72CD183C5001CC904 /* AppState.swift */; };
+		E0BB52BA2CD2030F001CC904 /* AppManager+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B92CD2030F001CC904 /* AppManager+Camera.swift */; };
+		E0BB52BC2CD20978001CC904 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52BB2CD20978001CC904 /* HomeView.swift */; };
+		E0BB52BE2CD20DB1001CC904 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52BD2CD20DB1001CC904 /* DrawingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		610347D82B46861E00693CE3 /* ContentStageConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStageConfiguration.swift; sourceTree = "<group>"; };
+		61791DC32B41514300302B57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61791DDA2B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SplatRenderer+ModelRenderer.swift"; sourceTree = "<group>"; };
+		61791DDB2B4154FB00302B57 /* ModelIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelIdentifier.swift; sourceTree = "<group>"; };
+		61791DDC2B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SampleBoxRenderer+ModelRenderer.swift"; sourceTree = "<group>"; };
+		61791DDE2B4154FB00302B57 /* ModelRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
+		61791DDF2B4154FB00302B57 /* MatrixMathUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixMathUtil.swift; sourceTree = "<group>"; };
+		61791DF62B41551F00302B57 /* SplatSketchApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplatSketchApp.swift; sourceTree = "<group>"; };
+		61791DF72B41551F00302B57 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		61791DF82B41551F00302B57 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61791E0C2B41683500302B57 /* VisionSceneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionSceneRenderer.swift; sourceTree = "<group>"; };
+		61791E0E2B41685800302B57 /* MetalKitSceneRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalKitSceneRenderer.swift; sourceTree = "<group>"; };
+		61791E112B416DCF00302B57 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		61791E142B42294700302B57 /* MetalKitSceneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalKitSceneView.swift; sourceTree = "<group>"; };
+		617E50B02B314BE200F99766 /* SplatSketchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplatSketchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E02D9DA22CC98C1500285A16 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		E02D9DA42CC9942500285A16 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		E02D9DA62CC9947900285A16 /* SIMD+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SIMD+Extensions.swift"; sourceTree = "<group>"; };
+		E02D9DA82CC9AC7A00285A16 /* TouchManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchManagerView.swift; sourceTree = "<group>"; };
+		E02D9DAA2CC9AD7D00285A16 /* NoTouchCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTouchCanvasView.swift; sourceTree = "<group>"; };
+		E02D9DAC2CC9B07300285A16 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		E0BB52A52CC9E5B7001CC904 /* CodableStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStroke.swift; sourceTree = "<group>"; };
+		E0BB52A82CCEFE39001CC904 /* SplatSketchProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatSketchProject.swift; sourceTree = "<group>"; };
+		E0BB52AA2CD17B94001CC904 /* CanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasData.swift; sourceTree = "<group>"; };
+		E0BB52AC2CD17DA0001CC904 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
+		E0BB52AF2CD17F5A001CC904 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		E0BB52B12CD18012001CC904 /* AppManager+Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+Project.swift"; sourceTree = "<group>"; };
+		E0BB52B32CD18286001CC904 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		E0BB52B52CD18310001CC904 /* AppManager+Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+Canvas.swift"; sourceTree = "<group>"; };
+		E0BB52B72CD183C5001CC904 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		E0BB52B92CD2030F001CC904 /* AppManager+Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+Camera.swift"; sourceTree = "<group>"; };
+		E0BB52BB2CD20978001CC904 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E0BB52BD2CD20DB1001CC904 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		E0BB52BF2CD22262001CC904 /* SplatSketchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SplatSketchApp.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		617E50AD2B314BE200F99766 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				617E50CB2B314C4800F99766 /* SplatIO in Frameworks */,
+				617E50C92B314C4800F99766 /* PLYIO in Frameworks */,
+				61791E002B415D3F00302B57 /* MetalSplatter in Frameworks */,
+				61791E022B415D3F00302B57 /* SampleBoxRenderer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		610347DF2B4689DB00693CE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61791DDB2B4154FB00302B57 /* ModelIdentifier.swift */,
+				61791DDE2B4154FB00302B57 /* ModelRenderer.swift */,
+				61791DDC2B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift */,
+				61791DDA2B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		610347E02B468A0000693CE3 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				610347D82B46861E00693CE3 /* ContentStageConfiguration.swift */,
+				61791DF72B41551F00302B57 /* ContentView.swift */,
+				61791E0E2B41685800302B57 /* MetalKitSceneRenderer.swift */,
+				61791E142B42294700302B57 /* MetalKitSceneView.swift */,
+				61791E0C2B41683500302B57 /* VisionSceneRenderer.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		610347E12B468A0B00693CE3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				61791DDF2B4154FB00302B57 /* MatrixMathUtil.swift */,
+				E02D9DA62CC9947900285A16 /* SIMD+Extensions.swift */,
+				E02D9DAA2CC9AD7D00285A16 /* NoTouchCanvasView.swift */,
+				E02D9DAC2CC9B07300285A16 /* CameraController.swift */,
+				E0BB52A52CC9E5B7001CC904 /* CodableStroke.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		610347E22B468A1100693CE3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				61791E112B416DCF00302B57 /* Constants.swift */,
+				61791DF62B41551F00302B57 /* SplatSketchApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		619832682AF0BC390022500D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61E3FD792AE5CB0200032652 = {
+			isa = PBXGroup;
+			children = (
+				E0BB52BF2CD22262001CC904 /* SplatSketchApp.entitlements */,
+				E0BB52AE2CD17F4D001CC904 /* AppManager */,
+				E0BB52A72CCEFE17001CC904 /* ProjectData */,
+				E02D9DA12CC98BE400285A16 /* Views */,
+				610347E22B468A1100693CE3 /* App */,
+				610347E12B468A0B00693CE3 /* Util */,
+				610347E02B468A0000693CE3 /* Scene */,
+				610347DF2B4689DB00693CE3 /* Model */,
+				61791DF82B41551F00302B57 /* Info.plist */,
+				61791DC32B41514300302B57 /* Assets.xcassets */,
+				61E3FD832AE5CB0200032652 /* Products */,
+				619832682AF0BC390022500D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		61E3FD832AE5CB0200032652 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				617E50B02B314BE200F99766 /* SplatSketchApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E02D9DA12CC98BE400285A16 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E02D9DA22CC98C1500285A16 /* CanvasView.swift */,
+				E0BB52BD2CD20DB1001CC904 /* DrawingView.swift */,
+				E02D9DA82CC9AC7A00285A16 /* TouchManagerView.swift */,
+				E0BB52BB2CD20978001CC904 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E0BB52A72CCEFE17001CC904 /* ProjectData */ = {
+			isa = PBXGroup;
+			children = (
+				E0BB52A82CCEFE39001CC904 /* SplatSketchProject.swift */,
+				E0BB52B32CD18286001CC904 /* Canvas.swift */,
+				E0BB52AA2CD17B94001CC904 /* CanvasData.swift */,
+				E0BB52AC2CD17DA0001CC904 /* CameraData.swift */,
+				E02D9DA42CC9942500285A16 /* Camera.swift */,
+			);
+			path = ProjectData;
+			sourceTree = "<group>";
+		};
+		E0BB52AE2CD17F4D001CC904 /* AppManager */ = {
+			isa = PBXGroup;
+			children = (
+				E0BB52AF2CD17F5A001CC904 /* AppManager.swift */,
+				E0BB52B72CD183C5001CC904 /* AppState.swift */,
+				E0BB52B12CD18012001CC904 /* AppManager+Project.swift */,
+				E0BB52B52CD18310001CC904 /* AppManager+Canvas.swift */,
+				E0BB52B92CD2030F001CC904 /* AppManager+Camera.swift */,
+			);
+			path = AppManager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		617E50AF2B314BE200F99766 /* SplatSketchApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 617E50C12B314BE300F99766 /* Build configuration list for PBXNativeTarget "SplatSketchApp" */;
+			buildPhases = (
+				617E50AC2B314BE200F99766 /* Sources */,
+				617E50AD2B314BE200F99766 /* Frameworks */,
+				617E50AE2B314BE200F99766 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SplatSketchApp;
+			packageProductDependencies = (
+				617E50C82B314C4800F99766 /* PLYIO */,
+				617E50CA2B314C4800F99766 /* SplatIO */,
+				61791DFF2B415D3F00302B57 /* MetalSplatter */,
+				61791E012B415D3F00302B57 /* SampleBoxRenderer */,
+			);
+			productName = "MetalSplatter SampleApp";
+			productReference = 617E50B02B314BE200F99766 /* SplatSketchApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61E3FD7A2AE5CB0200032652 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					617E50AF2B314BE200F99766 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 61E3FD7D2AE5CB0200032652 /* Build configuration list for PBXProject "SplatSketchApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61E3FD792AE5CB0200032652;
+			packageReferences = (
+				61791DFE2B415D3F00302B57 /* XCLocalSwiftPackageReference ".." */,
+			);
+			productRefGroup = 61E3FD832AE5CB0200032652 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				617E50AF2B314BE200F99766 /* SplatSketchApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		617E50AE2B314BE200F99766 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		617E50AC2B314BE200F99766 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61791DE22B4154FB00302B57 /* ModelIdentifier.swift in Sources */,
+				E0BB52B42CD18286001CC904 /* Canvas.swift in Sources */,
+				E0BB52AB2CD17B94001CC904 /* CanvasData.swift in Sources */,
+				E0BB52BC2CD20978001CC904 /* HomeView.swift in Sources */,
+				E0BB52BE2CD20DB1001CC904 /* DrawingView.swift in Sources */,
+				E02D9DAB2CC9AD7D00285A16 /* NoTouchCanvasView.swift in Sources */,
+				610347DA2B46874500693CE3 /* ContentView.swift in Sources */,
+				61791DE42B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift in Sources */,
+				61791DEA2B4154FB00302B57 /* MatrixMathUtil.swift in Sources */,
+				E0BB52B22CD18012001CC904 /* AppManager+Project.swift in Sources */,
+				610347DB2B46875700693CE3 /* VisionSceneRenderer.swift in Sources */,
+				610347D92B46864500693CE3 /* SplatSketchApp.swift in Sources */,
+				61791E102B41688000302B57 /* MetalKitSceneRenderer.swift in Sources */,
+				E02D9DA92CC9AC7A00285A16 /* TouchManagerView.swift in Sources */,
+				E02D9DA32CC98C1500285A16 /* CanvasView.swift in Sources */,
+				E02D9DA72CC9947900285A16 /* SIMD+Extensions.swift in Sources */,
+				E0BB52AD2CD17DA0001CC904 /* CameraData.swift in Sources */,
+				E0BB52B62CD18310001CC904 /* AppManager+Canvas.swift in Sources */,
+				61791DE02B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift in Sources */,
+				61791DE82B4154FB00302B57 /* ModelRenderer.swift in Sources */,
+				E0BB52B02CD17F5A001CC904 /* AppManager.swift in Sources */,
+				61791DCF2B41544300302B57 /* Assets.xcassets in Sources */,
+				E02D9DA52CC9942500285A16 /* Camera.swift in Sources */,
+				E0BB52BA2CD2030F001CC904 /* AppManager+Camera.swift in Sources */,
+				E0BB52A92CCEFE39001CC904 /* SplatSketchProject.swift in Sources */,
+				61791E132B416DD700302B57 /* Constants.swift in Sources */,
+				E0BB52B82CD183C5001CC904 /* AppState.swift in Sources */,
+				E0BB52A62CC9E5B7001CC904 /* CodableStroke.swift in Sources */,
+				E02D9DAD2CC9B07300285A16 /* CameraController.swift in Sources */,
+				61791E162B42297B00302B57 /* MetalKitSceneView.swift in Sources */,
+				610347DC2B46875A00693CE3 /* ContentStageConfiguration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		617E50C22B314BE300F99766 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SplatSketchApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JWRLR8NUM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "arkit metal";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adam.splatSketchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		617E50C32B314BE300F99766 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SplatSketchApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JWRLR8NUM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = "arkit metal";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adam.splatSketchApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+		61E3FD982AE5CB0300032652 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61E3FD992AE5CB0300032652 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		617E50C12B314BE300F99766 /* Build configuration list for PBXNativeTarget "SplatSketchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				617E50C22B314BE300F99766 /* Debug */,
+				617E50C32B314BE300F99766 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61E3FD7D2AE5CB0200032652 /* Build configuration list for PBXProject "SplatSketchApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61E3FD982AE5CB0300032652 /* Debug */,
+				61E3FD992AE5CB0300032652 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		61791DFE2B415D3F00302B57 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		61791DFF2B415D3F00302B57 /* MetalSplatter */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MetalSplatter;
+		};
+		61791E012B415D3F00302B57 /* SampleBoxRenderer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SampleBoxRenderer;
+		};
+		617E50C82B314C4800F99766 /* PLYIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PLYIO;
+		};
+		617E50CA2B314C4800F99766 /* SplatIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SplatIO;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 61E3FD7A2AE5CB0200032652 /* Project object */;
+}
