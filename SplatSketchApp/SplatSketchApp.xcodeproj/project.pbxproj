@@ -33,7 +33,6 @@
 		E0BB52A62CC9E5B7001CC904 /* CodableStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52A52CC9E5B7001CC904 /* CodableStroke.swift */; };
 		E0BB52A92CCEFE39001CC904 /* SplatSketchProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52A82CCEFE39001CC904 /* SplatSketchProject.swift */; };
 		E0BB52AB2CD17B94001CC904 /* CanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52AA2CD17B94001CC904 /* CanvasData.swift */; };
-		E0BB52AD2CD17DA0001CC904 /* CameraData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52AC2CD17DA0001CC904 /* CameraData.swift */; };
 		E0BB52B02CD17F5A001CC904 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52AF2CD17F5A001CC904 /* AppManager.swift */; };
 		E0BB52B22CD18012001CC904 /* AppManager+Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B12CD18012001CC904 /* AppManager+Project.swift */; };
 		E0BB52B42CD18286001CC904 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B32CD18286001CC904 /* Canvas.swift */; };
@@ -42,6 +41,10 @@
 		E0BB52BA2CD2030F001CC904 /* AppManager+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52B92CD2030F001CC904 /* AppManager+Camera.swift */; };
 		E0BB52BC2CD20978001CC904 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52BB2CD20978001CC904 /* HomeView.swift */; };
 		E0BB52BE2CD20DB1001CC904 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52BD2CD20DB1001CC904 /* DrawingView.swift */; };
+		E0BB52C12CD2BD78001CC904 /* CanvasRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52C02CD2BD78001CC904 /* CanvasRenderer.swift */; };
+		E0BB52C32CD2BE3F001CC904 /* canvasVertexShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52C22CD2BE3F001CC904 /* canvasVertexShader.metal */; };
+		E0BB52C52CD2BE56001CC904 /* canvasFragmentShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = E0BB52C42CD2BE56001CC904 /* canvasFragmentShader.metal */; };
+		E0BB52C72CD2E9BC001CC904 /* splat.ply in Resources */ = {isa = PBXBuildFile; fileRef = E0BB52C62CD2E9BC001CC904 /* splat.ply */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +72,6 @@
 		E0BB52A52CC9E5B7001CC904 /* CodableStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableStroke.swift; sourceTree = "<group>"; };
 		E0BB52A82CCEFE39001CC904 /* SplatSketchProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplatSketchProject.swift; sourceTree = "<group>"; };
 		E0BB52AA2CD17B94001CC904 /* CanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasData.swift; sourceTree = "<group>"; };
-		E0BB52AC2CD17DA0001CC904 /* CameraData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraData.swift; sourceTree = "<group>"; };
 		E0BB52AF2CD17F5A001CC904 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		E0BB52B12CD18012001CC904 /* AppManager+Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppManager+Project.swift"; sourceTree = "<group>"; };
 		E0BB52B32CD18286001CC904 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
@@ -79,6 +81,10 @@
 		E0BB52BB2CD20978001CC904 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E0BB52BD2CD20DB1001CC904 /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		E0BB52BF2CD22262001CC904 /* SplatSketchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SplatSketchApp.entitlements; sourceTree = "<group>"; };
+		E0BB52C02CD2BD78001CC904 /* CanvasRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasRenderer.swift; sourceTree = "<group>"; };
+		E0BB52C22CD2BE3F001CC904 /* canvasVertexShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = canvasVertexShader.metal; sourceTree = "<group>"; };
+		E0BB52C42CD2BE56001CC904 /* canvasFragmentShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = canvasFragmentShader.metal; sourceTree = "<group>"; };
+		E0BB52C62CD2E9BC001CC904 /* splat.ply */ = {isa = PBXFileReference; lastKnownFileType = text; path = splat.ply; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +105,14 @@
 		610347DF2B4689DB00693CE3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E0BB52C62CD2E9BC001CC904 /* splat.ply */,
 				61791DDB2B4154FB00302B57 /* ModelIdentifier.swift */,
 				61791DDE2B4154FB00302B57 /* ModelRenderer.swift */,
 				61791DDC2B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift */,
 				61791DDA2B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift */,
+				E0BB52C02CD2BD78001CC904 /* CanvasRenderer.swift */,
+				E0BB52C22CD2BE3F001CC904 /* canvasVertexShader.metal */,
+				E0BB52C42CD2BE56001CC904 /* canvasFragmentShader.metal */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,7 +200,6 @@
 				E0BB52A82CCEFE39001CC904 /* SplatSketchProject.swift */,
 				E0BB52B32CD18286001CC904 /* Canvas.swift */,
 				E0BB52AA2CD17B94001CC904 /* CanvasData.swift */,
-				E0BB52AC2CD17DA0001CC904 /* CameraData.swift */,
 				E02D9DA42CC9942500285A16 /* Camera.swift */,
 			);
 			path = ProjectData;
@@ -275,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0BB52C72CD2E9BC001CC904 /* splat.ply in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +297,7 @@
 			files = (
 				61791DE22B4154FB00302B57 /* ModelIdentifier.swift in Sources */,
 				E0BB52B42CD18286001CC904 /* Canvas.swift in Sources */,
+				E0BB52C12CD2BD78001CC904 /* CanvasRenderer.swift in Sources */,
 				E0BB52AB2CD17B94001CC904 /* CanvasData.swift in Sources */,
 				E0BB52BC2CD20978001CC904 /* HomeView.swift in Sources */,
 				E0BB52BE2CD20DB1001CC904 /* DrawingView.swift in Sources */,
@@ -294,6 +305,7 @@
 				610347DA2B46874500693CE3 /* ContentView.swift in Sources */,
 				61791DE42B4154FB00302B57 /* SampleBoxRenderer+ModelRenderer.swift in Sources */,
 				61791DEA2B4154FB00302B57 /* MatrixMathUtil.swift in Sources */,
+				E0BB52C52CD2BE56001CC904 /* canvasFragmentShader.metal in Sources */,
 				E0BB52B22CD18012001CC904 /* AppManager+Project.swift in Sources */,
 				610347DB2B46875700693CE3 /* VisionSceneRenderer.swift in Sources */,
 				610347D92B46864500693CE3 /* SplatSketchApp.swift in Sources */,
@@ -301,13 +313,13 @@
 				E02D9DA92CC9AC7A00285A16 /* TouchManagerView.swift in Sources */,
 				E02D9DA32CC98C1500285A16 /* CanvasView.swift in Sources */,
 				E02D9DA72CC9947900285A16 /* SIMD+Extensions.swift in Sources */,
-				E0BB52AD2CD17DA0001CC904 /* CameraData.swift in Sources */,
 				E0BB52B62CD18310001CC904 /* AppManager+Canvas.swift in Sources */,
 				61791DE02B4154FB00302B57 /* SplatRenderer+ModelRenderer.swift in Sources */,
 				61791DE82B4154FB00302B57 /* ModelRenderer.swift in Sources */,
 				E0BB52B02CD17F5A001CC904 /* AppManager.swift in Sources */,
 				61791DCF2B41544300302B57 /* Assets.xcassets in Sources */,
 				E02D9DA52CC9942500285A16 /* Camera.swift in Sources */,
+				E0BB52C32CD2BE3F001CC904 /* canvasVertexShader.metal in Sources */,
 				E0BB52BA2CD2030F001CC904 /* AppManager+Camera.swift in Sources */,
 				E0BB52A92CCEFE39001CC904 /* SplatSketchProject.swift in Sources */,
 				61791E132B416DD700302B57 /* Constants.swift in Sources */,

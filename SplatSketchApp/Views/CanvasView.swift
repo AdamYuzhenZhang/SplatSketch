@@ -13,10 +13,9 @@ import PencilKit
 struct CanvasView: UIViewRepresentable {
     //@ObservedObject var camera: Camera
     @Environment(AppManager.self) var appManager
-    // @Binding var canvasView: PKCanvasView
+    //@Binding var canvasView: PKCanvasView
     // @Binding var strokesDescription: String
-    
-    @State private var canvasView = PKCanvasView()
+    //@State private var canvasView = PKCanvasView()
     
     //var strokesDescription: String
     
@@ -31,6 +30,7 @@ struct CanvasView: UIViewRepresentable {
     @State private var strokesData: [Data] = []
     
     func makeUIView(context: Context) -> PKCanvasView {
+        let canvasView = PKCanvasView()
         canvasView.isOpaque = false
         canvasView.backgroundColor = .clear
         canvasView.drawingPolicy = .anyInput
@@ -38,13 +38,23 @@ struct CanvasView: UIViewRepresentable {
         toolPicker.setVisible(true, forFirstResponder: canvasView)
         toolPicker.addObserver(canvasView)
         canvasView.becomeFirstResponder()
+        canvasView.delegate = context.coordinator
+        DispatchQueue.main.async {
+            appManager.canvasBounds = canvasView.bounds
+            appManager.canvasScale = UIScreen.main.scale
+        }
         return canvasView
     }
     
     func updateUIView(_ uiView: PKCanvasView, context: Context) {
-        
+        print("Updating UI view.")
+        guard let drawing = appManager.activeCanvas?.drawing else { return }
+
+        if uiView.drawing != drawing {
+            uiView.drawing = drawing
+        }
     }
-    
+    /*
     func saveDrawing() {
         // Serialize the drawing
         let drawingData = canvasView.drawing.dataRepresentation()
@@ -123,7 +133,7 @@ struct CanvasView: UIViewRepresentable {
         }
         
     }
-    
+    */
     /*
     func loadStrokesFromFile() {
         // Load the data from the file
@@ -152,7 +162,7 @@ struct CanvasView: UIViewRepresentable {
             print("Error loading strokes from file: \(error.localizedDescription)")
         }
     }
-     */
+     
     
     func exportDrawingAsImage() {
         let drawing = canvasView.drawing
@@ -175,7 +185,7 @@ struct CanvasView: UIViewRepresentable {
             print("Failed to convert image to PNG data.")
         }
     }
-    
+     
     func strokeDescription(_ stroke: PKStroke, index: Int) -> String {
         var description = "----------------------- \nStroke \(index + 1) -- "
         
@@ -223,7 +233,7 @@ struct CanvasView: UIViewRepresentable {
         
         return description
     }
-    
+     */
     class Coordinator: NSObject, PKCanvasViewDelegate {
         var parent: CanvasView
         
@@ -233,7 +243,8 @@ struct CanvasView: UIViewRepresentable {
         }
         
         func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-            
+            parent.appManager.activeCanvas?.drawing = canvasView.drawing
+            //print("Drawing Changed")
         }
 
         

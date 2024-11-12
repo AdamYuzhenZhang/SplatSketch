@@ -7,6 +7,7 @@ import os
 import SampleBoxRenderer
 import simd
 import SwiftUI
+import Combine
 
 class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
     private static let log =
@@ -17,18 +18,16 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
     let device: MTLDevice
     let commandQueue: MTLCommandQueue
 
-    var model: ModelIdentifier?
+    var model: ModelIdentifier? // GS model
+    //var planes: [ModelIdentifier] = []
     var modelRenderer: (any ModelRenderer)?
-    
+    var modelRenderer2: (any ModelRenderer)?  // For testing
+    var canvasRenderer: CanvasRenderer?
     // Added
     //var camera = Camera()
     var appManager: AppManager
 
     let inFlightSemaphore = DispatchSemaphore(value: Constants.maxSimultaneousRenders)
-
-    //var lastRotationUpdateTimestamp: Date? = nil
-    //var rotation: Angle = .zero
-
     var drawableSize: CGSize = .zero
 
     init?(_ metalKitView: MTKView, appManager: AppManager) {
@@ -40,7 +39,16 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
         metalKitView.colorPixelFormat = MTLPixelFormat.bgra8Unorm_srgb
         metalKitView.depthStencilPixelFormat = MTLPixelFormat.depth32Float
         metalKitView.sampleCount = 1
+        //metalKitView.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         metalKitView.clearColor = MTLClearColor(red: 0, green: 0, blue: 0, alpha: 0)
+        // added
+        metalKitView.isOpaque = false
+        metalKitView.backgroundColor = UIColor.clear
+        //metalKitView.isOpaque = true
+        //metalKitView.backgroundColor = UIColor.gray
+        // For macOS, metalKitView.layer?.backgroundColor = NSColor.clear.cgColor
+        super.init()
+        appManager.registerRenderer(self)
     }
 
     func load(_ model: ModelIdentifier?) async throws {
@@ -61,8 +69,20 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
                 try await splat.read(from: url)
                 modelRenderer = splat
                 print("Loaded Splat from \(url.path)")
+                
             } catch {
                 print("Failed to load Splat from \(url.path): \(error)")
+            }
+            
+            // Initialize CanvasRenderer
+            do {
+                let canvas = try await CanvasRenderer(device: device,
+                                                colorFormat: metalKitView.colorPixelFormat,
+                                                depthFormat: metalKitView.depthStencilPixelFormat,
+                                                sampleCount: metalKitView.sampleCount)
+                self.canvasRenderer = canvas
+            } catch {
+                Self.log.error("Failed to initialize CanvasRenderer: \(error.localizedDescription)")
             }
         case .sampleBox:
             modelRenderer = try! await SampleBoxRenderer(device: device,
@@ -74,6 +94,28 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
         case .none:
             break
         }
+    }
+    
+    func addTest() async throws {
+        modelRenderer2 = nil
+        modelRenderer2 = try! await SampleBoxRenderer(device: device,
+                                                     colorFormat: metalKitView.colorPixelFormat,
+                                                     depthFormat: metalKitView.depthStencilPixelFormat,
+                                                     sampleCount: metalKitView.sampleCount,
+                                                     maxViewCount: 1,
+                                                     maxSimultaneousRenders: Constants.maxSimultaneousRenders)
+    }
+    func removeTest() {
+        modelRenderer2 = nil
+    }
+    
+    // Add canvas to canvas renderer
+    func loadCanvas(canvas: Canvas) {
+        guard let texture = self.loadTexture(from: canvas.textureURL) else { return }
+        canvasRenderer?.addCanvas(canvas: canvas, texture: texture)
+    }
+    func removeCanvas(name: String) {
+        canvasRenderer?.removeCanvas(name: name)
     }
 
     private var viewport: ModelRendererViewportDescriptor {
@@ -99,10 +141,9 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
          */
         
         let aspectRatio = Float(drawableSize.width / drawableSize.height)
-        let projectionMatrix = matrix_perspective_right_hand(fovyRadians: Float(Constants.fovy.radians),
-                                                             aspectRatio: aspectRatio,
-                                                             nearZ: 0.1,
-                                                             farZ: 100.0)
+        appManager.activeCamera?.aspectRatio = aspectRatio
+        let fovy = appManager.activeCamera?.fovy
+        let projectionMatrix = matrix_perspective_right_hand(fovyRadians: Float(fovy ?? 60 * (.pi / 180)), aspectRatio: aspectRatio, nearZ: 0.1, farZ: 100.0)
         
         
         //let viewMatrix = camera.viewMatrix()
@@ -115,17 +156,6 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
                                                viewMatrix: viewMatrix,
                                                screenSize: SIMD2(x: Int(drawableSize.width), y: Int(drawableSize.height)))
     }
-/*
-    private func updateRotation() {
-        let now = Date()
-        defer {
-            lastRotationUpdateTimestamp = now
-        }
-
-        guard let lastRotationUpdateTimestamp else { return }
-        rotation += Constants.rotationPerSecond * now.timeIntervalSince(lastRotationUpdateTimestamp)
-    }
- */
 
     func draw(in view: MTKView) {
         guard let modelRenderer else { return }
@@ -137,13 +167,11 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
             inFlightSemaphore.signal()
             return
         }
-
+        
         let semaphore = inFlightSemaphore
         commandBuffer.addCompletedHandler { (_ commandBuffer)-> Swift.Void in
             semaphore.signal()
         }
-
-        // updateRotation() // Don't update rotation
 
         do {
             try modelRenderer.render(viewports: [viewport],
@@ -153,8 +181,31 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
                                      rasterizationRateMap: nil,
                                      renderTargetArrayLength: 0,
                                      to: commandBuffer)
+            if let renderer2 = modelRenderer2 {
+                try renderer2.render(viewports: [viewport],
+                                         colorTexture: view.multisampleColorTexture ?? drawable.texture,
+                                         colorStoreAction: view.multisampleColorTexture == nil ? .store : .multisampleResolve,
+                                         depthTexture: view.depthStencilTexture,
+                                         rasterizationRateMap: nil,
+                                         renderTargetArrayLength: 0,
+                                         to: commandBuffer)
+            }
         } catch {
             Self.log.error("Unable to render scene: \(error.localizedDescription)")
+        }
+        
+        if let canvas = canvasRenderer {
+            do {
+                try canvas.render(viewports: [viewport],
+                                  colorTexture: view.multisampleColorTexture ?? drawable.texture,
+                                  colorStoreAction: view.multisampleColorTexture == nil ? .store : .multisampleResolve,
+                                  depthTexture: view.depthStencilTexture,
+                                  rasterizationRateMap: nil,
+                                  renderTargetArrayLength: 0,
+                                  to: commandBuffer)
+            } catch {
+                print("Unable to render canvas: \(error.localizedDescription)")
+            }
         }
 
         commandBuffer.present(drawable)
@@ -165,6 +216,21 @@ class MetalKitSceneRenderer: NSObject, MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         drawableSize = size
     }
+    
+    private func loadTexture(from url: URL) -> MTLTexture? {
+        let textureLoader = MTKTextureLoader(device: device)
+        do {
+            let texture = try textureLoader.newTexture(URL: url, options: [
+                MTKTextureLoader.Option.origin: MTKTextureLoader.Origin.bottomLeft.rawValue,
+                MTKTextureLoader.Option.SRGB: NSNumber(value: true)
+            ])
+            return texture
+        } catch {
+            Self.log.error("Failed to load texture from \(url.path): \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
 }
 
 #endif // os(iOS) || os(macOS)

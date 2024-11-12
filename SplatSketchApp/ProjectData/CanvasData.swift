@@ -13,10 +13,25 @@ struct CanvasData: Codable {
     let drawingData: Data
     let cameraData: CameraData
     
-    init(name: String, drawing: PKDrawing, camera: Camera) {
-        self.name = name
-        self.drawingData = drawing.dataRepresentation()
-        self.cameraData = CameraData(camera: camera)
+    init(canvas: Canvas) {
+        self.name = canvas.name
+        self.cameraData = canvas.cameraData
+        self.drawingData = canvas.drawing.dataRepresentation()
     }
+}
+
+struct CameraData: Codable {
+    let position: SIMD3<Float>
+    let lookAtTarget: SIMD3<Float>
+    let rotation: SIMD3<Float>
+    let fovy: Float
+    let aspectRatio: Float
     
+    init(camera: Camera) {
+        self.position = camera.position
+        self.lookAtTarget = camera.lookAtTarget
+        self.rotation = camera.rotation
+        self.fovy = camera.fovy
+        self.aspectRatio = camera.aspectRatio
+    }
 }
